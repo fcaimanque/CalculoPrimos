@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 
 public class CalcularPrimos {
-    
+
     //Constante de maximo de hilos
     private static final int CANT_HILOS = 16;
 
