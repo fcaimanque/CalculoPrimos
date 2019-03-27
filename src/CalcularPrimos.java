@@ -8,13 +8,11 @@ import java.util.concurrent.TimeUnit;
 
 
 public class CalcularPrimos {
-    /**
-     * Constante de la cantidad maxima de hilos
-     */
+    
+    //Constante de maximo de hilos
     private static final int CANT_HILOS = 16;
-    /**
-     * Constante de la cantidad maximo de primos
-     */
+
+    //Constante de maximo de primos a calcular
     private static final int MAX_PRIMOS = 600000;
 
 
