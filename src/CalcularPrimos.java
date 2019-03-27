@@ -1,5 +1,6 @@
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Fernando Caimanque
@@ -22,7 +23,7 @@ public class CalcularPrimos {
      *
      * @param args
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         // Ciclo que itera en el rango definido por su maximo y minimo
         for (int cantPrimos = (100 * 1000); cantPrimos <= MAX_PRIMOS; cantPrimos += (100 * 1000)) {
@@ -51,6 +52,10 @@ public class CalcularPrimos {
                 // Se termina service
                 service.shutdown();
 
+                if (!service.awaitTermination(60000, TimeUnit.SECONDS)){
+                    System.err.println("Fuera de tiempo limite");
+                }
+
                 // Se calcula la diferencia entre tiempo inicial y final, obteniendose el tiempo de ejecucion
                 long resultado = System.currentTimeMillis() - tiempoIni;
 
@@ -64,7 +69,7 @@ public class CalcularPrimos {
 
                 double speedup = (tiempoPrev / tiempoFin);
 
-                System.out.println("Cantidad de Hilos: " + cantHilos + "| Tiempo: " + tiempoFin + " msec    | Speed-Up: " + speedup + " sec");
+                System.out.println("Cantidad de Hilos: " + cantHilos + "| Tiempo: " + tiempoFin + " msec    | Speed-Up: " + speedup);
             }
         }
     }
